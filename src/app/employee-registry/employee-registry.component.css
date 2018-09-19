@@ -1,0 +1,10 @@
+.col-6.custom {
+    padding-right: 10%;
+}
+
+.row.customtabel {
+    width: 80%;
+    margin-top: 2%;
+    margin-left: 12%;
+    border: 1px solid #000;
+}
