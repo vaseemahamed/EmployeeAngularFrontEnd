@@ -19,12 +19,17 @@ export class EmployeeRegistryComponent implements OnInit {
   employeeList: IEmployee[] = [];
   onSuccess = false;
   onError = false;
+  message = '';
 
   constructor(private employeeService: EmployeeRegistrySertive) { }
 
   ngOnInit() {
     this.employeeService.getAllEmployees().then(res => {
       this.employeeList = res;
+    }, error => {
+      this.onSuccess = false;
+      this.onError = true;
+      this.message = 'Employee List Not Loaded';
     });
   }
 
@@ -35,10 +40,12 @@ export class EmployeeRegistryComponent implements OnInit {
       this.employee = new IEmployee();
       this.onSuccess = true;
       this.onError = false;
+      this.message = 'Employee Details Stored';
     }, error => {
       console.log('Error in saving');
       this.onSuccess = false;
       this.onError = true;
+      this.message = 'Employee Details Could Not Be Saved';
     });
   }
 

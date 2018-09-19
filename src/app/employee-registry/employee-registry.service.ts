@@ -14,20 +14,24 @@ export class EmployeeRegistrySertive {
 
     }
     getAllEmployees(): Promise<any> {
-        let res: Promise<any>;
-        res = this.httpService.get(this.url + 'getAllEmployees').toPromise().then();
-        return res;
+        return new Promise<any>((resolve, reject) => {
+            this.httpService.get(this.url + 'getAllEmployees').subscribe(x => {
+                resolve(x);
+            }, err => {
+                reject(err);
+            });
+        });
     }
     saveEmployee(employee: IEmployee): Promise<IEmployee> {
-        let headerValues = new HttpHeaders();
-        headerValues = headerValues.set('Content-Type', 'application/json');
-        let res: Promise<any>;
-        res = this.httpService.post(this.url + 'post', employee).toPromise().
-            then(
-                onfulfilled => {
-                }, onrejected => {
-                });
-        return res;
+        return new Promise<any>((resolve, reject) => {
+            let headerValues = new HttpHeaders();
+            headerValues = headerValues.set('Content-Type', 'application/json');
+            this.httpService.post(this.url + 'post', employee, { headers: headerValues }).subscribe(x => {
+                resolve(x);
+            }, err => {
+                reject(err);
+            });
+        });
     }
 
 }

@@ -1,10 +1,10 @@
 <div class="row ">
   <div class="alert alert-success w-50 mb-4" *ngIf="onSuccess">
-    <strong>Success!! Employee Saved Successfully</strong>
+    <strong>Success!! {{message}}</strong>
   </div>
 
   <div class="alert alert-danger w-50 mb-4" *ngIf="onError">
-    <strong>Error!! Employee Can Not Be Saved </strong>
+    <strong>Error!! {{message}} </strong>
   </div>
 </div>
 
